@@ -1,0 +1,58 @@
+@import url("http://fonts.cdnfonts.com/css/netflix-sans");
+* {
+  font-family: "Netflix Sans", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #4c6c70;
+  height: 68px;
+  justify-content: space-between;
+}
+
+.header-right {
+  display: flex;
+}
+
+.header-right .header-logo img {
+  width: 100px;
+  height: 40px;
+  object-fit: cover;
+}
+.header-right-menu {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 16px;
+}
+.header-right-menu a {
+  text-decoration: none;
+  color: #fff;
+  margin: 10px;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left .profile {
+  margin: 0 10px;
+}
+
+.header-left .search {
+  margin: 0 10px;
+}
+.header-left .notification {
+  margin: 0 10px;
+}
+
+.header-left .profile img {
+  max-width: 52px;
+  max-height: 32px;
+  object-fit: cover;
+  border-radius: 5px;
+}

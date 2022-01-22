@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+    }
+    body {
+    }
+    h2 {
+      color: #244061;
+      text-align: center;
+    }
+    header {
+      display: flex;
+      color: #244061;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .tt {
+      border-bottom: 1px solid #244061;
+      padding-bottom: 10px;
+    }
+
+    .tb {
+      border-top: 1px dashed #244061;
+      min-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .td-item1 {
+      width: 220px;
+      text-align: center;
+      border-left: 1px dashed #244061;
+
+      border-bottom: 1px dashed #244061;
+      border-right: 1px dashed #244061;
+      padding: 10px;
+      font-weight: 600;
+      color: #244061;
+    }
+    .td-item12 {
+      width: 220px;
+      border-left: 1px dashed #244061;
+      border-right: 1px dashed #244061;
+      border-bottom: 1px dashed #244061;
+      border-right: 1px dashed #244061;
+      padding: 10px;
+      color: #244061;
+    }
+    .td-item2 {
+      padding: 10px;
+      border-bottom: 1px dashed #244061;
+      font-weight: 600;
+      color: #632423;
+    }
+    .td-item3 {
+      border-bottom: 1px dashed #244061;
+      border-right: 1px dashed #244061;
+      color: #244061;
+    }
+    .td-item4 {
+      border-bottom: 1px dashed #244061;
+      border-right: 1px dashed #244061;
+      color: #244061;
+    }
+  </style>
+  <body>
+    <header>
+      <img
+        src="data:image/png;base64,
+      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"
+      />
+      <div class="tt">
+        <h5 style="margin-bottom: 10px">CÔNG TY TNHH NEW HOPE VĨNH LONG</h5>
+        <div style="display: flex">
+          <h5>Địa chỉ:</h5>
+          <span>
+            Lô 1, KCN Bình Minh, Ấp Mỹ Hưng 2, Xã Mỹ Hòa, TX. Bình Minh, Tỉnh
+            Vĩnh Long</span
+          >
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+          "
+        >
+          <div style="display: flex">
+            <h5>MST:</h5>
+            <span style="padding: 0 5px"> 1501066067</span>
+          </div>
+          <div style="display: flex">
+            <h5>Tel:</h5>
+            <span style="padding: 0 5px">02703 891 688 (Phòng Kinh Doanh)</span>
+          </div>
+        </div>
+        <h5 style="margin-top: 10px">Website: www.newhopesingaporevn.com</h5>
+      </div>
+    </header>
+    <main>
+      <h2 style="font-size: 25px">PHIẾU LƯƠNG NHÂN VIÊN KINH DOANH</h2>
+      <div style="text-align: center; color: #632423; margin-top: 10px">
+        <h3>THÁNG 08/2021</h3>
+      </div>
+      <table class="tb">
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td class="td-item1">NHÂN VIÊN</td>
+            <td class="td-item2">Lê Văn Hải</td>
+            <td class="td-item3"></td>
+            <td class="td-item3"></td>
+          </tr>
+          <tr>
+            <td class="td-item1">CHỨC VỤ</td>
+            <td class="td-item2">NVKD B4</td>
+            <td class="td-item3"></td>
+            <td class="td-item3"></td>
+          </tr>
+          <tr>
+            <td class="td-item1">BỘ PHẬN</td>
+            <td class="td-item2">KD Tôm</td>
+            <td class="td-item3"></td>
+            <td class="td-item3"></td>
+          </tr>
+          <tr>
+            <td class="td-item3" style="border-left: 1px dashed #244061"></td>
+            <td class="td-item3"></td>
+            <td class="td-item3"></td>
+            <td class="td-item3">
+              <div
+                style="
+                  text-align: right;
+                  color: #632423;
+                  margin-top: 5px;
+                  border-right: 1px dashed #244061;
+                "
+              >
+                <span style="color: #244061; font-style: italic"
+                  >Đơn vị tính:</span
+                >
+                VND
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">Ngày công</td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              26
+            </td>
+            <td class="td-item4">Thưởng đại lí CS thông thường</td>
+            <td class="td-item3" style="text-align: right; color: #632423"></td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Ngày công thực tế
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              26
+            </td>
+            <td class="td-item4">Thưởng đại lí CS thông thường</td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              30,296,000
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Ngày nghỉ hưởng lương
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423"></td>
+            <td class="td-item4">Thưởng bù Quý</td>
+            <td class="td-item3" style="text-align: right; color: #632423"></td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">Lương cơ bản</td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              3,733,000
+            </td>
+            <td class="td-item4" style="font-weight: bold">
+              Tổng tiền thưởng tháng
+            </td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              30,296,000
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">Phí hỗ trợ khác</td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              7,267,000
+            </td>
+            <td class="td-item4">Trả thưởng giữ lại</td>
+            <td class="td-item3" style="text-align: right; color: #632423"></td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">Tổng cộng</td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              11,000,00
+            </td>
+            <td class="td-item4">Phát thưởng 60%</td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              18,178,000
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Lương ngày công thực tế
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              11,000,00
+            </td>
+            <td class="td-item4">Thưởng giữ lại 40%</td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              12,118,000
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">Sản lượng cơ bản</td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              55.000
+            </td>
+            <td class="td-item4">Thưởng đại lí mới</td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              19,681,000
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Sản lượng mục tiêu
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              160.000
+            </td>
+            <td class="td-item4">Phạt đại lí ngưng hợp tác</td>
+            <td class="td-item3" style="text-align: right; color: #632423"></td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Sản lượng thực tế
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              164.260
+            </td>
+            <td class="td-item4">Thưởng (+) /Trừ khác (-)</td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              (206,083)
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Sản lượng vượt cơ bản
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              109.260
+            </td>
+            <td class="td-item4" style="font-weight: bold">
+              Tổng lương trước thuế
+            </td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              48,818,000
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">Tỷ lệ hoàn thành</td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              103%
+            </td>
+            <td class="td-item4">BHXH (8%)</td>
+            <td style="border-right: 1px dashed #244061"></td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Điểm khảo hạch quá trình
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              98%
+            </td>
+            <td class="td-item4">BHYT (1.5%)</td>
+            <td
+              style="
+                text-align: right;
+                color: #632423;
+                border-right: 1px dashed #244061;
+              "
+            >
+              391,965
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left; font-weight: bold">
+              Tổng lương sau đánh giá KPI
+            </td>
+            <td
+              class="td-item4"
+              style="text-align: right; color: #632423; font-weight: bold"
+            >
+              11,165,000
+            </td>
+            <td class="td-item4">BHYT (1.5%)</td>
+            <td class="td-item3" style="border-right: 1px dashed #244061"></td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Tiêu chuẩn thưởng SLCB
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              120,000
+            </td>
+            <td class="td-item4">Phí công đoàn</td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              37,330
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left">
+              Tiêu chuẩn thưởng vượt SLCB
+            </td>
+            <td class="td-item4" style="text-align: right; color: #632423">
+              350,000
+            </td>
+            <td class="td-item4">Thuế TNCN</td>
+            <td class="td-item3" style="text-align: right; color: #632423">
+              6,106,500
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item12" style="text-align: left"></td>
+            <td class="td-item4" style="text-align: right; color: #632423"></td>
+            <td
+              class="td-item4"
+              style="text-align: center; font-size: 20px; font-weight: bold"
+            >
+              Lương thực lãnh
+            </td>
+            <td
+              class="td-item3"
+              style="
+                text-align: right;
+                color: #632423;
+                font-weight: bold;
+                font-size: 20px;
+              "
+            >
+              42,282,000
+            </td>
+          </tr>
+          <tr>
+            <td class="td-item3" style="border-left: 1px dashed #244061">
+              <div style="color: #632423; font-weight: bold">
+                <span style="color: #244061; font-weight: bold">Ghi chú:</span>
+                Ô Thưởng (+)/Trừ khác (-)
+              </div>
+              <div style="color: #632423; font-weight: bold">
+                <span
+                  style="color: #244061; font-weight: bold; min-width: 150px"
+                  >- Nếu là số dương:</span
+                >
+                <span>Tiền thưởng</span>
+              </div>
+              <div style="color: #632423; font-weight: bold">
+                <span
+                  style="color: #244061; font-weight: bold; min-width: 150px"
+                  >- Nếu là số âm:</span
+                >
+                <span>Tiền phạt</span>
+              </div>
+            </td>
+            <td style="border-bottom: 1px dashed #244061"></td>
+            <td style="border-bottom: 1px dashed #244061"></td>
+            <td style="border-bottom: 1px dashed #244061"></td>
+            <td
+              style="
+                border-bottom: 1px dashed #244061;
+                border-right: 1px dashed #244061;
+              "
+            ></td>
+          </tr>
+          <tr>
+            <td>
+              <div style="margin-top: 20px; color: #632423; font-weight: bold">
+                <span>Ký nhận:</span>
+              </div>
+              <div style="margin-top: 20px; color: #244061; font-weight: bold">
+                Lê Văn Hải
+              </div>
+            </td>
+            <td></td>
+            <td>
+              <div style="margin-top: 20px; color: #632423; font-weight: bold">
+                <span>Lập biểu:</span>
+              </div>
+              <div style="margin-top: 20px; color: #244061; font-weight: bold">
+                NGUYỄN THỊ KIM LINH
+              </div>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
